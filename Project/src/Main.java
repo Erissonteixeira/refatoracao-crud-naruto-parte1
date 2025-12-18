@@ -1,15 +1,30 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+    public static void main(String[] args) {
+
+        Naruto naruto = new Naruto("Naruto", 100);
+        RockLee lee = new RockLee("Rock Lee", 100);
+
+        naruto.adicionarJutsu("Rasengan", new Jutsu(30, 20));
+        lee.adicionarJutsu("Chute Giratório", new Jutsu(25, 15));
+
+        while (naruto.estaVivo() && lee.estaVivo()) {
+
+            naruto.usarJutsu(lee);
+
+            if (!lee.estaVivo()) {
+                System.out.println("Rock Lee foi derrotado!");
+                break;
+            }
+
+            lee.usarJutsu(naruto);
+
+            if (!naruto.estaVivo()) {
+                System.out.println("Naruto foi derrotado!");
+                break;
+            }
+
+            System.out.println("------------------------");
         }
     }
 }
